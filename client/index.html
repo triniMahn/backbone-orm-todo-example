@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/base.css">
+        <link rel="stylesheet" href="css/TODOApp.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    </head>
+    <body>
+        <section id="todoapp">
+            <header id="header"></header>
+            <section id="messages"></section>
+            <section id="main"></section>
+            <section id="filters"></section>
+            <footer id="footer"></footer>
+        </section>
+        <footer id="info">
+            <p>Double-click to edit a todo</p>
+            <p>TODO App modified by <a href="http://github.com/triniMahn">Ren Ramkhelawan</a> to use BackboneORM</p>
+            <p>Original Example Created by
+                <a href="http://github.com/jsoverson">Jarrod Overson</a>&nbsp;and
+                <a href="http://github.com/derickbailey">Derick Bailey</a>&nbsp;using
+                <a href="http://marionettejs.com">Backbone.Marionette</a>
+            </p>
+            <p>Further variations on the Backbone.Marionette app are also
+                <a href="https://github.com/marionettejs/backbone.marionette/wiki/Projects-and-websites-using-marionette">available</a>.</p>
+        </footer>
+        
+        <!--START Libraries - Yeah, lots of libraries -->
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/moment.min.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.0/backbone.localStorage-min.js"></script>
+        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        
+        <script type="text/javascript" src="/js/lib/inflection.min.js"></script>
+        <script type="text/javascript" src="/js/lib/backbone-orm.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/superagent/0.15.7/superagent.js"></script>
+        <script type="text/javascript" src="/js/lib/backbone-http.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.marionette/1.4.1-bundled/backbone.marionette.min.js"></script>
+        <!--END Libraries -->
+        
+        <!--START Application Scripts-->
+        <script src="js/TodoApp.js"></script>
+        <!--<script src="js/TodoMVC.Todos.js"></script>
+        <script src="js/TodoMVC.Layout.js"></script>
+        <script src="js/TodoMVC.TodoList.Views.js"></script>
+        <script src="js/TodoMVC.TodoList.js"></script>-->
+        
+        <!--START Templates -->
+        <script type="text/html" id="template-header">
+                <h1>todos</h1>
+                <input id="new-todo" placeholder="What needs to be done?" autofocus>
+                
+        </script>
+
+        <script type="text/html" id="template-todoItemView">
+                <div class="view">
+                        <input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>>
+                        
+                        <label><%= title %></label>
+                        <p class="todoDate">
+                            Created:&nbsp;<%= (moment(created).format("dddd, MMMM Do YYYY, h:mm:ss a")) %><br/>
+                            <%= true == completed?'Completed: ' + (moment(completedDate).format("dddd, MMMM Do YYYY, h:mm:ss a")):'' %>
+                        </p>
+                        <button class="destroy"></button>
+                </div>
+                <input class="edit" value="<%= title %>">
+        </script>
+
+        <script type="text/html" id="template-todoListCompositeView">
+                <input id="toggle-all" type="checkbox">
+                <label for="toggle-all">Mark all as complete</label>
+                <ul id="todo-list"></ul>
+        </script>
+        
+        <script type="text/html" id="template-todoListFilters">
+            <div class="">
+                <h3>Find Archived by Date (Created):</h3>
+                <p>
+                    From:&nbsp;<input class="txtDateFrom" type="text"/>&nbsp;&nbsp;To:&nbsp;<input class="txtDateTo" type="text"/>&nbsp;&nbsp;<button id="btnGo">Go!</button>
+                </p>
+            </div>
+        </script>
+        <!-- END Templates -->
+    </body>
+</html>

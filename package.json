@@ -1,0 +1,20 @@
+{
+  "name": "BackboneORM-Todo",
+  "version": "0.0.1",
+  "description": "The standard Todo app -- showcasing BackboneORM",
+  "main": "server1.js",
+  "author": "Ren Ramkhelawan <ren@arkitekt.ca>",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "backbone": "~1.1.2",
+    "backbone-mongo": "~0.5.5",
+    "backbone-rest": "~0.5.6",
+    "express": "~3.2.6",
+    "backbone-orm": "~0.5.13",
+    "inflection": "~1.3.5"
+  }
+}
